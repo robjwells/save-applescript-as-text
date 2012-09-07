@@ -5,7 +5,7 @@ A little time-saving AppleScript to quickly save a plain text .applescript file 
 * **There are two versions.**  
 If you write scripts in Apple’s own AppleScript Editor you’ll want `ASE-Save as text.scpt`. If you write scripts in [Script Debugger](http://www.latenightsw.com) then you’ll want `SD-Save as text.scpt`.
 * **The script is saved to disk at the very start.**  
-I’d advise against removing `save` on line 3, because there isn’t a good way of keep your script open with unsaved changes anyway. (Your script “becomes” the .applescript when it is created.)
+I’d advise against removing `save` on line 3, because there isn’t a good way of keep your script open with unsaved changes anyway. (Your script “becomes” the .applescript when it is created in the ASE version and the SD version reads the file from disk.)
 * **Script Debugger 4.5 or earlier users may need to edit the script first**  
 I haven’t tested it. But it uses standard commands so I don’t see why not. Even so, if you’re using an earlier version I’d recommend you check out Script Debugger 5 as it’s really nice.
 * **Leopard (OSX 10.5) or earlier users may need to edit the script first.**  
