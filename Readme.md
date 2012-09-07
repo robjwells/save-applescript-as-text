@@ -11,6 +11,12 @@ I haven’t tested it. But it uses standard commands so I don’t see why not. E
 * **Leopard (OSX 10.5) or earlier users may need to edit the script first.**  
 AppleScript Editor was called Script Editor before Snow Leopard (10.6), so you may need to edit `ASE-Save as text.scpt` so the application references just say `"Script Editor"`.
 
+### Important information about Script Debugger version
+`SD-Save as text.scpt` now uses AppleScript Editor to actually save the script as an .applescript file. This is because Github doesn’t read text files saved from Script Debugger properly. Script Debugger seems to do some interesting things with .scpt files and I wouldn’t be surprised if this has some knock-on effect.
+
+All the saving happens in the background and is very quick, with AppleScript Editor quitting after it’s done. But if you really don’t want it to launch or don’t care about Github compatibility just edit `SD-Save as text.scpt` and delete lines 22-28 and the comments around the old Script Debugger save block I’ve left in at the end.
+
+
 ### Meta
 * *What happens if you run this script while working on it?*  
 It fails, because you can’t close a running script. But it works fine if you run it from somewhere else. (I created the .applescript files for Github by having [FastScripts](http://www.red-sweater.com/fastscripts/) run the script via an alias while it was open.)
