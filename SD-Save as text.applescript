@@ -1,7 +1,5 @@
-(*
-Written by Rob Wells on September 7th 2012
-https://github.com/robjwells/save-applescript-as-text
-*)
+-- by Rob Wells
+-- https://github.com/robjwells/save-applescript-as-text
 
 tell application "Script Debugger"
 	tell the front document
@@ -16,7 +14,12 @@ set pathOffset to (the offset of originalName in oldPath)
 set theFolder to (characters 1 thru (pathOffset - 1) of oldPath) as text
 
 set thePoint to (the offset of "." in originalName)
-set newName to ((characters 1 through thePoint of originalName) as text) & "applescript"
+if thePoint is not 0 then -- 0 if file ext is hidden
+	set newName to ((characters 1 through thePoint of originalName) as text) & "applescript"
+else
+	set newName to originalName & ".applescript"
+end if
+
 set savePath to theFolder & newName
 
 launch application "AppleScript Editor"
@@ -26,13 +29,3 @@ tell application "AppleScript Editor"
 	close document newName saving no
 	quit
 end tell
-
-(* Remove the comments around this block if you want to do this entirely in Script Debugger.
-Warning: Github will not be able to properly interpret your .applescript file.
-
-tell application "Script Debugger"
-	save the front document as text script in savePath
-	open oldPath
-	close document newName saving no
-end tell
-*)
