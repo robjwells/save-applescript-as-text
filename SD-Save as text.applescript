@@ -6,6 +6,7 @@ tell application "Script Debugger"
 		save
 		set originalName to the name
 		set posixPath to the path
+		set sourceCode to the source text
 	end tell
 end tell
 
@@ -22,10 +23,13 @@ end if
 
 set savePath to theFolder & newName
 
-launch application "AppleScript Editor"
-tell application "AppleScript Editor"
-	open posixPath
-	save document originalName as "text" in savePath
+launch application "BBEdit"
+tell application "BBEdit"
+	set bbDoc to make new document
+	set the text of bbDoc to sourceCode
+	tell bbDoc to activate
+	save bbDoc to savePath
 	close document newName saving no
-	quit
 end tell
+
+tell application "Script Debugger" to activate
